@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Task Manager</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+
+<body>
+  <div class="container">
+    <h1>Task Manager</h1>
+
+    <div class="row">
+      <% for (const task of tasks) { %>
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">
+                <%= task.title %>
+              </h5>
+              <p class="card-text">
+                <%= task.description %>
+              </p>
+
+              <div class="card-buttons">
+                <form method="GET" action="/task/<%= task.id %>/edit">
+                  <button type="submit" class="btn btn-primary">Edit</button>
+                </form>
+
+                <form method="POST" action="/task/<%= task.id %>?_method=DELETE">
+                  <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% } %>
+    </div>
+
+    <form method="POST" action="/task">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" id="title" name="title" required />
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Add Task</button>
+    </form>
+  </div>
+</body>
+
+</html>
