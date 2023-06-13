@@ -16,4 +16,4 @@ Simple crud app with express. Create a new task, edit a task, or delete a task!
    node index.js
    ```
 
-2. In your browser type - `localhost:8080`
+2. In your browser - `localhost:8080`
